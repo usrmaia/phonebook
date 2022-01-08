@@ -25,6 +25,13 @@ class DB:
         except sqlite3.Error as erro:
             print(f"Error: {erro}")
     
+    def get_count(self):
+        try:
+            self.cursor.execute(f"select count(*) from phonebook")
+            return self.cursor.fetchall()
+        except sqlite3.Error as erro:
+            print(f"Error: {erro}")
+
     def get_table(self):
         try:
             self.cursor.execute(f"select * from phonebook")

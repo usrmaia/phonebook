@@ -4,7 +4,7 @@ def format_name(name):
     return name[:15]
 
 def format_message(message):
-    invalid_characters = ascii_lowercase + "()-+."
+    invalid_characters = ascii_lowercase + "()-+.[],"
     for letter in invalid_characters:
         message = message.replace(letter, "")
 
