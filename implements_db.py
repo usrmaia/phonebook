@@ -1,5 +1,4 @@
-from data_base import *
-from useful import *
+from class_db import *
 from input import *
 from tabulate import tabulate
 from os import system
