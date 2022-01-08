@@ -17,11 +17,18 @@ class DB:
             self.cursor.execute(f"create table phonebook (id integer primary key autoincrement, name text not null, phone text not null, type_contact text not null)")
         except sqlite3.Error as erro:
             print(f"Error: {erro}")
+
+    def get_filter(self, type_contact):
+        try:
+            self.cursor.execute(f"select * from phonebook where type_contact = '{type_contact}'")
+            return self.cursor.fetchall()
+        except sqlite3.Error as erro:
+            print(f"Error: {erro}")
     
-    def print_table(self):
+    def get_table(self):
         try:
             self.cursor.execute(f"select * from phonebook")
-            print(self.cursor.fetchall())
+            return self.cursor.fetchall()
         except sqlite3.Error as erro:
             print(f"Error: {erro}")
 

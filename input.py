@@ -1,9 +1,11 @@
 from useful import *
 
 def input_id():
-    id = input("Inform Contact ID: ")
-
-    return int(id)
+    try:
+        id = int(input("Inform Contact ID: "))
+        return int(id)
+    except:
+        return 0
 
 def input_name():
     name = input("Name and Last Name: ")
