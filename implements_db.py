@@ -44,7 +44,7 @@ def filter():
     table = db.get_filter(type_contact)
     headers = ["ID", "Name", "Phone", "Type Contact"]
     print(tabulate(table, headers, tablefmt = "simple"))
-    system("pause")
+    input("Press Key To Continue...")
 
 def close():
     db.close()

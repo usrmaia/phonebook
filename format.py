@@ -15,7 +15,8 @@ def format_phone(country_code, DDD, phone):
     DDD = format_message(DDD)
     phone = format_message(phone)
     
-    return f"+{country_code} {DDD} {phone}"
+    phone = f"+{country_code} {DDD} {phone}"
+    return phone[:16]
 
 def format_type_contact(type_contact):
     match type_contact:

@@ -7,16 +7,18 @@ from datetime import datetime
 def header():
     date = datetime.now()
     #print(f"{date.year}/{date.strftime('%B')}/{date.day} - {date.hour}:{date.minute}")
-    print("PHONEBOOK    " + date.strftime("%c"))
+    title = "\033[33m" + "PHONEBOOK " + date.strftime("%c") + "\033[0;0m"
+    print(title.center(67, " "))
 
     total = db.count_lines()
-    print(f"There are a total of {total} registered contacts")
+    print(f"There are a total of {total} registered contacts".center(55, " "))
+    print(f"Page {page}/{total // 5 + 1}".rjust(56, "-"))
 
 def print_contacts():
     table = db.print_table(page)
-    headers = ["ID", "Name", "Phone", "Type Contact"]
+    header = ["ID", "Name", "Phone", "Type Contact"]
 
-    print(tabulate(table, headers, tablefmt = "simple"))
+    print(tabulate(table, header, tablefmt = "simple"))
 
 def select_option():
     print("\n[P]: Previous Page \t[N]: Next Page\n")
