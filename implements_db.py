@@ -2,10 +2,9 @@ from class_db import *
 from input import *
 from format import *
 from tabulate import tabulate
-from os import system
 
 db = DB()
-#db.create_table()
+db.create_table()
 
 def count_lines():
     count = db.get_count()

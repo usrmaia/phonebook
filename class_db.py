@@ -57,6 +57,9 @@ class DB:
         try:
             self.cursor.execute(f"delete from phonebook where id = {id}")
             self.conn.commit()
+
+            self.cursor.execute(f"alter table phonebook auto_increment = 1")
+            self.conn.commit()
         except sqlite3.Error as erro:
             print(f"Error: {erro}")
 
