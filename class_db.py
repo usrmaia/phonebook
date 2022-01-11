@@ -14,7 +14,7 @@ class DB:
     
     def create_table(self):
         try:
-            self.cursor.execute(f"create table phonebook (id integer primary key autoincrement, name text not null, phone text not null, type_contact text not null)")
+            self.cursor.execute(f"create table if not exists phonebook (id integer primary key autoincrement, name text not null, phone text not null, type_contact text not null)")
         except sqlite3.Error as erro:
             print(f"Error: {erro}")
 
@@ -56,9 +56,6 @@ class DB:
     def delete(self, id):
         try:
             self.cursor.execute(f"delete from phonebook where id = {id}")
-            self.conn.commit()
-
-            self.cursor.execute(f"alter table phonebook auto_increment = 1")
             self.conn.commit()
         except sqlite3.Error as erro:
             print(f"Error: {erro}")

@@ -51,6 +51,8 @@ page = 1
 
 while True:
     system("cls")
+    progress_bar()
+    system("cls")
     header()
     print_contacts()
     select_option()
