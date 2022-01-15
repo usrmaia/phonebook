@@ -18,6 +18,14 @@ def print_table(page):
     table = table[position_contact:position_contact + 5]
     return table
 
+def to_locate():
+    name = input_name()
+    table = db.toLocate(name)
+
+    headers = ["ID", "Name", "Phone", "Type Contact"]
+    print(tabulate(table, headers, tablefmt = "simple"))
+    input("Press Key To Continue...")
+
 def insert():
     name = input_name()
     phone = input_phone()
@@ -41,6 +49,7 @@ def delete():
 def filter():
     type_contact = input_type_contact()
     table = db.get_filter(type_contact)
+
     headers = ["ID", "Name", "Phone", "Type Contact"]
     print(tabulate(table, headers, tablefmt = "simple"))
     input("Press Key To Continue...")

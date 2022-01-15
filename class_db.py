@@ -39,6 +39,13 @@ class DB:
         except sqlite3.Error as erro:
             print(f"Error: {erro}")
 
+    def toLocate(self, name):
+        try:
+            self.cursor.execute(f"select * from phonebook where name like '{name}%'")
+            return self.cursor.fetchall()
+        except sqlite3.Error as erro:
+            print(f"Error: {erro}")
+
     def insert(self, name, phone, type_contact):
         try:
             self.cursor.execute(f"insert into phonebook (name, phone, type_contact) values ('{name}', '{phone}', '{type_contact}')")
@@ -65,9 +72,5 @@ class DB:
 
 if __name__ == "__main__":
     bank = DB("exemplo.db")
-    #bank.create_table("cidade", "nome text, CEP integer")
-    #bank.insert("pessoas", "george", 20, "george@gmail.com")
-    #bank.update("pessoas", "idade=22", "nome='george'")
-    #bank.delete("pessoas", "idade=40")
     bank.print_table("pessoas")
     bank.close()
